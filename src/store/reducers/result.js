@@ -1,4 +1,4 @@
-import * as types from '../actions';
+import * as types from '../actions/actionTypes';
 
 const initialState = { results: [] }
 
@@ -8,9 +8,9 @@ const reducer = (state = initialState, action) => {
       return { ...state,
         results: state.results.concat({id: new Date(), value: action.counter}) }
     case types.DELETE_RESULT:
-      const newArray = state.results.filter(el => el.id !== action.id)
+      // const newArray = state.results.filter(el => el.id !== action.id)
       return { ...state,
-        results: newArray }
+        results: state.results.filter(el => el.id !== action.id) }
     default: break;
   }
   return state;
